@@ -9,7 +9,7 @@ describe('TicTacToe', function() {
     });
 
     it('should be an array', function () {
-      expect(typeof TicTacToe.board).toBe("array");
+      expect(TicTacToe.board).toEqual(jasmine.any(Array));
     });
 
   });
