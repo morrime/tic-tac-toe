@@ -2,6 +2,7 @@ import TicTacToe from 'tic_tac_toe';
 
 
 describe('TicTacToe', function() {
+  // create instance
   describe('board', function () {
 
     it('should be an array of three arrays', function() {
