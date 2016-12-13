@@ -1,14 +1,12 @@
-import TicTacToe from 'tic_tac_toe';
+import Game from 'tic_tac_toe';
 
 
-describe('TicTacToe', function() {
-  // create instance
-
-  describe('game', function () {
-    console.log("########");
-    console.log(Game.board);
+describe('Game', function() {
 
     var game = new Game();
+    console.log("########");
+    console.log(game.checkIfWon());
+
     it('should be an array of three arrays', function() {
       expect(game.board.length).toEqual(3);
     });
@@ -17,5 +15,5 @@ describe('TicTacToe', function() {
       expect(game.board).toEqual(jasmine.any(Array));
     });
 
-  });
+
 });
