@@ -3,14 +3,18 @@ import TicTacToe from 'tic_tac_toe';
 
 describe('TicTacToe', function() {
   // create instance
-  describe('board', function () {
 
+  describe('game', function () {
+    console.log("########");
+    console.log(Game.board);
+
+    var game = new Game();
     it('should be an array of three arrays', function() {
-      expect(TicTacToe.board.length).toEqual(3);
+      expect(game.board.length).toEqual(3);
     });
 
     it('should be an array', function () {
-      expect(TicTacToe.board).toEqual(jasmine.any(Array));
+      expect(game.board).toEqual(jasmine.any(Array));
     });
 
   });
