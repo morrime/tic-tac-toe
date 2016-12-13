@@ -1,11 +1,16 @@
-import Scoring from 'scrabble';
+import TicTacToe from 'tic_tac_toe';
 
-describe('Scoring', function() {
-  describe('score', function () {
 
-    it('should score a given word', function() {
-      expect(Scoring.score("word")).toEqual(8);
+describe('TicTacToe', function() {
+  describe('board', function () {
+
+    it('should be an array of three arrays', function() {
+      expect(TicTacToe.board.length).toEqual(3);
     });
+
+    it('should be an array', function () {
+      expect(typeof TicTacToe.board).toBe("array");
     });
+
   });
 });
