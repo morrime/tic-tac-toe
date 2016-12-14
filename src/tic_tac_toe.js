@@ -23,6 +23,7 @@ var Game = function () {
    console.log("    /   \\   ");
    console.log("   / ___ \\  ");
    console.log("   \\/___\\/  ");
+   return false;
  };
 
   // Moved into Game for testing reasonsß
@@ -57,7 +58,15 @@ var Game = function () {
       ) {
         return true;
       } else if (this.playCounter === 9) {
-        this.catsGame();
+        console.log(this.board);
+        console.log("Cat's Game");
+        console.log("   /\\___/\\   ");
+        console.log("  (  o o  )  ");
+        console.log("  /   *   \\  ");
+        console.log("  \\__\\_/__/  meow!");
+        console.log("    /   \\   ");
+        console.log("   / ___ \\  ");
+        console.log("   \\/___\\/  ");
         return false;
       }
     }

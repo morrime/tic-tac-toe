@@ -12,6 +12,20 @@ describe('Game', function() {
     it('should be an array', function () {
       expect(blankGame.board).toEqual(jasmine.any(Array));
     });
+
+    it('should have subarrays with a length of 3', function(){
+      for (var i = 0; i < blankGame.board.length; i ++ ) {
+        expect(blankGame.board[i].length).toEqual(3);
+      }
+    });
+
+    it('should have subarrays filled with nulls', function(){
+      for (var i = 0; i < blankGame.board.length; i ++ ) {
+        for (var j = 0; j < blankGame.board[i].length; j ++ ) {
+          expect(blankGame.board[i][j]).toEqual(null);
+        }
+      }
+    });
   });
 
   describe('checkIfWon', function() {
@@ -52,6 +66,7 @@ describe('Game', function() {
     it('should know if there is a cats game', function() {
       expect(catGame.checkIfWon()).toEqual(false);
     });
+
     it('should know if there is a horizontal win', function() {
       expect(horizontalWinningGame.checkIfWon()).toEqual(true);
     });
