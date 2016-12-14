@@ -115,6 +115,8 @@ describe('Game', function() {
     var game2 = new Game();
     var game3 = new Game();
     var game4 = new Game();
+    var game5 = new Game();
+
 
     it('should return o if two plays have ocurred on the same space (because the second play was not valid)', function() {
       game2.consolePlay(1,1);
@@ -147,4 +149,16 @@ describe('Game', function() {
       expect(game4.playCounter).toEqual(2);
     });
   });
+
+  // it('should throw exception if input isnt between 1 and 3 for either row or column, or both', function() {
+  //
+  //   expect(game5.consolePlay(4,1)).toThrow(SyntaxError);
+  //   expect(game5.consolePlay(2,0)).toThrow(SyntaxError);
+  //   expect(game5.consolePlay(5,4)).toThrow(SyntaxError);
+  //   expect(game5.consolePlay("a","b")).toThrow(SyntaxError);
+  //   expect(game5.consolePlay("#","%")).toThrow(SyntaxError);
+  //
+  //
+  //
+  // });
 });
