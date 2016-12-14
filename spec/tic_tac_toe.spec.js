@@ -15,7 +15,6 @@ describe('Game', function() {
   });
 
   describe('checkIfWon', function() {
-
     var blankGame2 = new Game();
 
     var horizontalWinningGame = new Game();

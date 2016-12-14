@@ -48,7 +48,7 @@ var Game = function () {
     for(var i = 0; i < this.board.length; i++) {
       // horizontal win
       if ((this.board[i][0] == this.board[i][1]) && (this.board[i][0] == this.board[i][2]) && (this.board[i][0] !== null) ) {
-          return true;
+        return true;
       // vertical win
       } else if ((this.board[0][i] == this.board[1][i]) && (this.board[0][i] == this.board[2][i]) && (this.board[0][i] !== null)) {
         return true;
@@ -60,10 +60,10 @@ var Game = function () {
         this.catsGame();
         return false;
       }
+    }
     // no win
     return false;
   };
-
 
   // Welcome players
   console.log("Welcome to TIC TAC TOE!");
