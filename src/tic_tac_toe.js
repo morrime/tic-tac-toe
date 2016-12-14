@@ -1,13 +1,18 @@
 var Game = function () {
-// set empty board
+  // set empty board
   this.board = [
     [ null, null, null ],
     [ null, null, null ],
     [ null, null, null ]
   ];
+
   // determine whose turn it is
   this.xPlay = true;
-  console.log("Welcome to TIC TAC TOE!");
+
+  // Count number of turns that have occurred
+  this.playCounter = 0;
+
+  // Moved into Game for testing reasonsß
   this.determinePlayer = function() {
     // print current game board
     console.log("determinePlayer board (below)");
@@ -15,10 +20,16 @@ var Game = function () {
     // print whose turn it is
     if ( this.xPlay === true ) {
       console.log("Player X, it's your turn");
+      var x = "x";
+      return x;
     } else {
       console.log("Player O, it's your turn");
+      var o = "o";
+      return o;
     }
   };
+
+  // Just moved into Game for testing reasons
   this.checkIfWon = function() {
     for(var i = 0; i < this.board.length; i++) {
       // horizontal win
@@ -43,9 +54,10 @@ var Game = function () {
     // no win
     return false;
   };
+
+  // Welcome players
+  console.log("Welcome to TIC TAC TOE!");
 };
-
-
 
 Game.prototype.consolePlay = function(row, column) {
   // print player and board
@@ -54,28 +66,23 @@ Game.prototype.consolePlay = function(row, column) {
   // if spot isn't occupied, mark spot with correct letter for player "x"
   if((this.board[row-1][column-1] === null) && (this.xPlay === true)) {
     this.board[row-1][column-1] = "x";
+    this.xPlay = false;
     // print winner if that marking results in a win
     if ( this.checkIfWon() === true) {
       console.log("X WINS!");
-      console.log(checkIfWon());
-    // if no resulting win, switch turns
-    } else {
-      this.xPlay = false;
     }
     // if spot isn't occupied, mark spot with correct letter for player "o"
   } else if ((this.board[row-1][column-1] === null) && (this.xPlay === false)) {
     this.board[row-1][column-1] = "o";
+    this.xPlay = true;
     // print winner if that marking results in a win
     if (this.checkIfWon() === true) {
       console.log("O WINS");
     // if no resulting win, switch turns
-    } else {
-      this.xPlay = true;
     }
     // invalid play, re-prompt
   } else {
-    console.log("NO.");
-    console.log("invalid play board");
+    console.log("NOPE");
     this.determinePlayer();
   }
 };
