@@ -6,24 +6,28 @@ var Game = function () {
     [ null, null, null ]
   ];
   // determine whose turn it is
-  this.xPLay = true;
-  console.log(determinePlayer());
+  this.xPlay = true;
+  console.log("Welcome to TIC TAC TOE!");
 };
 
-Game.prototype.checkIfWon = function() {
-  for(var i = 0; i < this.board.length; i++) {
+checkIfWon = function(board) {
+  for(var i = 0; i < board.length; i++) {
     // horizontal win
     if (
-      (this.board[i][0] == this.board[i][1]) &&
-      (this.board[i][0] == this.board[i][2]) &&
-      (this.board[i][0] !== null) ) {
+      (board[i][0] == board[i][1]) &&
+      (board[i][0] == board[i][2]) &&
+      (board[i][0] !== null) ) {
         return true;
     // vertical win
-    } else if ((this.board[0][i] == this.board[1][i]) && (this.board[0][i] == this.board[2][i]) && (this.board[0][i] !== null)) {
+    } else if (
+      (board[0][i] == board[1][i]) && (board[0][i] == board[2][i]) && (board[0][i] !== null)) {
       return true;
     // diagonal win
-    } else if ( ((this.board[0][0] == this.board[1][1]) && (this.board[0][0] == this.board[2][2])) ||
-      ((this.board[0][2] == this.board[1][1]) && (this.board[0][2] == this.board[2][0])) ) {
+    } else if (
+      ( (board[0][0] == board[1][1]) && (board[0][0] == board[2][2]) && (board[1][1] !== null) )
+      ||
+      ( (board[0][2] == board[1][1]) && (board[0][2] == board[2][0]) && (board[1][1] !== null) )
+    ) {
         return true;
     }
   }
@@ -31,45 +35,53 @@ Game.prototype.checkIfWon = function() {
   return false;
 };
 
-Game.prototype.determinePlayer = function() {
+determinePlayer = function(xPlay, board) {
   // print current game board
-  console.log(this.board);
+  console.log("determinePlayer board (below)");
+  console.log(board);
   // print whose turn it is
-  if ( this.xPlay === true ) {
+  if ( xPlay === true ) {
     console.log("Player X, it's your turn");
   } else {
-    console.log("Player Y, it's your turn");
+    console.log("Player O, it's your turn");
   }
 };
 
 Game.prototype.consolePlay = function(row, column) {
   // print player and board
-  console.log(determinePlayer());
+  determinePlayer(this.xPlay, this.board);
+
   // if spot isn't occupied, mark spot with correct letter for player "x"
   if((this.board[row-1][column-1] === null) && (this.xPlay === true)) {
     this.board[row-1][column-1] = "x";
     // print winner if that marking results in a win
-    if (checkIfWon() === true) {
-      console.log("X WINS");
+    if ( checkIfWon(this.board) === true) {
+      console.log("X WINS!");
+      console.log(checkIfWon());
     // if no resulting win, switch turns
     } else {
-      xPlay = false;
+      this.xPlay = false;
     }
     // if spot isn't occupied, mark spot with correct letter for player "o"
   } else if ((this.board[row-1][column-1] === null) && (this.xPlay === false)) {
     this.board[row-1][column-1] = "o";
     // print winner if that marking results in a win
-    if (checkIfWon() === true) {
+    if (checkIfWon(this.board) === true) {
       console.log("O WINS");
     // if no resulting win, switch turns
     } else {
-      xPlay = true;
+      this.xPlay = true;
     }
     // invalid play, re-prompt
   } else {
     console.log("NO.");
-    console.log(determinePlayer());
+    console.log("invalid play board");
+    determinePlayer(this.xPlay, this.board);
   }
 };
 
-export default Game;
+// game = new Game();
+// game.consolePlay(1,3) //player x
+// console.log(game.board);
+
+// export default Game;
