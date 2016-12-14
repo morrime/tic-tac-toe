@@ -5,6 +5,19 @@ describe('Game', function() {
   describe('board', function() {
     var blankGame = new Game();
 
+    it('should be an array of three arrays', function() {
+      expect(blankGame.board.length).toEqual(3);
+    });
+
+    it('should be an array', function () {
+      expect(blankGame.board).toEqual(jasmine.any(Array));
+    });
+  });
+
+  describe('checkIfWon', function() {
+
+    var blankGame2 = new Game();
+
     var horizontalWinningGame = new Game();
     horizontalWinningGame.board = [
       [ null, "x", "x" ],
@@ -26,20 +39,12 @@ describe('Game', function() {
       [ "o", "o", "x" ]
     ];
 
-    it('should be an array of three arrays', function() {
-      expect(blankGame.board.length).toEqual(3);
-    });
-
-    it('should be an array', function () {
-      expect(blankGame.board).toEqual(jasmine.any(Array));
-    });
-
     it('should know if there is a horizontal win', function() {
       expect(horizontalWinningGame.checkIfWon()).toEqual(true);
     });
 
     it('should know to return false if null is in horizontal place', function() {
-      expect(blankGame.checkIfWon()).toEqual(false);
+      expect(blankGame2.checkIfWon()).toEqual(false);
     });
 
     it('should know if there is a vertical win', function() {
@@ -47,7 +52,7 @@ describe('Game', function() {
     });
 
     it('should know to return false if null is in vertical place', function() {
-      expect(blankGame.checkIfWon()).toEqual(false);
+      expect(blankGame2.checkIfWon()).toEqual(false);
     });
 
     it('should know if there is a diagonal win', function() {
@@ -55,7 +60,7 @@ describe('Game', function() {
     });
 
     it('should know to return false if null is in middle place(testing diagonal win case with nulls)', function() {
-      expect(blankGame.checkIfWon()).toEqual(false);
+      expect(blankGame2.checkIfWon()).toEqual(false);
     });
   });
   describe('determinePlayer', function() {
