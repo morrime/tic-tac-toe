@@ -11,7 +11,16 @@ var Game = function () {
 
   // Count number of turns that have occurred
   this.playCounter = 0;
-
+  this.catsGame = function() {
+    console.log(this.board + "Cat's Game");
+    console.log("   /\___/\   ");
+    console.log("  (  o o  )  ");
+    console.log("  /   *   \  ");
+    console.log("  \__\_/__/  meow!");
+    console.log("    /   \   ");
+    console.log("   / ___ \  ");
+    console.log("   \/___\/  ");
+  };
   // Moved into Game for testing reasonsß
   this.determinePlayer = function() {
     // print current game board
@@ -31,26 +40,35 @@ var Game = function () {
 
   // Just moved into Game for testing reasons
   this.checkIfWon = function() {
-    for(var i = 0; i < this.board.length; i++) {
-      // horizontal win
-      if (
-        (this.board[i][0] == this.board[i][1]) &&
-        (this.board[i][0] == this.board[i][2]) &&
-        (this.board[i][0] !== null) ) {
-          return true;
-      // vertical win
-      } else if (
-        (this.board[0][i] == this.board[1][i]) && (this.board[0][i] == this.board[2][i]) && (this.board[0][i] !== null)) {
-        return true;
-      // diagonal win
-      } else if (
-        ( (this.board[0][0] == this.board[1][1]) && (this.board[0][0] == this.board[2][2]) && (this.board[1][1] !== null) )
-        ||
-        ( (this.board[0][2] == this.board[1][1]) && (this.board[0][2] == this.board[2][0]) && (this.board[1][1] !== null) )
-      ) {
-          return true;
+      if (this.playCounter > 4) {
+        for(var i = 0; i < this.board.length; i++) {
+
+          // horizontal win
+          if (
+            (this.board[i][0] == this.board[i][1]) &&
+            (this.board[i][0] == this.board[i][2]) &&
+            (this.board[i][0] !== null) ) {
+              return true;
+          // vertical win
+          } else if (
+            (this.board[0][i] == this.board[1][i]) && (this.board[0][i] == this.board[2][i]) && (this.board[0][i] !== null)) {
+            return true;
+          // diagonal win
+          } else if (
+            ( (this.board[0][0] == this.board[1][1]) && (this.board[0][0] == this.board[2][2]) && (this.board[1][1] !== null) )
+            ||
+            ( (this.board[0][2] == this.board[1][1]) && (this.board[0][2] == this.board[2][0]) && (this.board[1][1] !== null) )
+          ) {
+              return true;
+            } else if (this.playCounter === 9) {
+              this.catsGame();
+              return false;
+            } else {
+              return false;
+            }
+          }
       }
-    }
+
     // no win
     return false;
   };
@@ -67,6 +85,7 @@ Game.prototype.consolePlay = function(row, column) {
   if((this.board[row-1][column-1] === null) && (this.xPlay === true)) {
     this.board[row-1][column-1] = "x";
     this.xPlay = false;
+    this.playCounter += 1;
     // print winner if that marking results in a win
     if ( this.checkIfWon() === true) {
       console.log("X WINS!");
@@ -75,6 +94,7 @@ Game.prototype.consolePlay = function(row, column) {
   } else if ((this.board[row-1][column-1] === null) && (this.xPlay === false)) {
     this.board[row-1][column-1] = "o";
     this.xPlay = true;
+    this.playCounter += 1;
     // print winner if that marking results in a win
     if (this.checkIfWon() === true) {
       console.log("O WINS");

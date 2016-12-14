@@ -24,6 +24,7 @@ describe('Game', function() {
       [ null, "o", "o" ],
       [ "x", "x", "x" ]
     ];
+    horizontalWinningGame.playCounter = 7;
 
     var verticalWinningGame = new Game();
     verticalWinningGame.board = [
@@ -31,6 +32,7 @@ describe('Game', function() {
       [ null, "o", "x" ],
       [ "x", "o", "x" ]
     ];
+    verticalWinningGame.playCounter = 7;
 
     var diagonalWinningGame = new Game();
     diagonalWinningGame.board = [
@@ -38,7 +40,19 @@ describe('Game', function() {
       [ "o", "x", null ],
       [ "o", "o", "x" ]
     ];
+    diagonalWinningGame.playCounter = 7;
 
+    var catsGame = new Game();
+    catsGame.board = [
+      [ "x", "o", "x" ],
+      [ "o", "x", "o" ],
+      [ "o", "x", "o" ]
+    ];
+    catsGame.playCounter = 9;
+
+    it('should know if there is a cats game', function() {
+      expect(catsGame.checkIfWon()).toEqual(false);
+    });
     it('should know if there is a horizontal win', function() {
       expect(horizontalWinningGame.checkIfWon()).toEqual(true);
     });
@@ -85,6 +99,7 @@ describe('Game', function() {
   describe('consolePlay', function() {
     var game2 = new Game();
     var game3 = new Game();
+    var game4 = new Game();
 
     it('should return o if two plays have ocurred on the same space (because the second play was not valid)', function() {
       game2.consolePlay(1,1);
@@ -97,6 +112,24 @@ describe('Game', function() {
       game3.consolePlay(1,3);
       game3.consolePlay(1,3);
       expect(game3.determinePlayer()).toEqual("x");
+    });
+
+    it('should increment playCounter by 1 if play is valid', function() {
+
+      // counter should start at 0
+      expect(game4.playCounter).toEqual(0);
+
+      // counter should increment by 1 with valid play
+      game4.consolePlay(1,1);
+      expect(game4.playCounter).toEqual(1);
+
+      // counter should not increment by 1 with invalid play
+      game4.consolePlay(1,1);
+      expect(game4.playCounter).toEqual(1);
+
+      // counter should increment by 1 with valid play
+      game4.consolePlay(1,2);
+      expect(game4.playCounter).toEqual(2);
     });
   });
 });
