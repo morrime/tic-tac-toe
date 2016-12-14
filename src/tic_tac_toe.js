@@ -29,7 +29,6 @@ var Game = function () {
   // Moved into Game for testing reasonsß
   this.determinePlayer = function() {
     // print current game board
-    console.log("determinePlayer board (below)");
     console.log(this.board);
     // print whose turn it is
     if ( this.xPlay === true ) {
@@ -75,12 +74,14 @@ var Game = function () {
   };
 
   // Welcome players
-  console.log("Welcome to TIC TAC TOE!");
+  console.log("Welcome to TIC TAC TOE! X plays first.");
+  console.log(this.board);
 };
 
 Game.prototype.consolePlay = function(row, column) {
-  // print player and board
-  this.determinePlayer();
+  while (( row !== 1 || row !== 2 || row !== 3 ) && ( column !== 1 || column !== 2 || column !== 3 )) {
+    throw new SyntaxError("Those are not valid coordinates");
+  }
 
   // if spot isn't occupied, mark spot with correct letter for player "x"
   if((this.board[row-1][column-1] === null) && (this.xPlay === true)) {
@@ -94,6 +95,9 @@ Game.prototype.consolePlay = function(row, column) {
         console.log("X WINS!");
       }
     }
+    // print player and board
+    this.determinePlayer();
+
     // if spot isn't occupied, mark spot with correct letter for player "o"
   } else if ((this.board[row-1][column-1] === null) && (this.xPlay === false)) {
     this.board[row-1][column-1] = "o";
@@ -106,15 +110,14 @@ Game.prototype.consolePlay = function(row, column) {
         console.log("O WINS!");
       }
     }
+    // print player and board
+    this.determinePlayer();
+
     // invalid play, re-prompt
   } else {
-    console.log("NOPE");
+    console.log("That's an invalid play. Please try again.");
     this.determinePlayer();
   }
 };
-
-// game = new Game();
-// game.consolePlay(1,3) //player x
-// console.log(game.board);
 
 export default Game;
