@@ -77,6 +77,7 @@ describe('Game', function() {
       expect(blankGame2.checkIfWon()).toEqual(false);
     });
   });
+
   describe('determinePlayer', function() {
     var game = new Game();
 
