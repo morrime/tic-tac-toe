@@ -12,14 +12,15 @@ var Game = function () {
   // Count number of turns that have occurred
   this.playCounter = 0;
   this.catsGame = function() {
-    console.log(this.board + "Cat's Game");
-    console.log("   /\___/\   ");
+    console.log(this.board);
+    console.log("Cat's Game");
+    console.log("   /\\___/\\   ");
     console.log("  (  o o  )  ");
-    console.log("  /   *   \  ");
-    console.log("  \__\_/__/  meow!");
-    console.log("    /   \   ");
-    console.log("   / ___ \  ");
-    console.log("   \/___\/  ");
+    console.log("  /   *   \\  ");
+    console.log("  \\__\\_/__/  meow!");
+    console.log("    /   \\   ");
+    console.log("   / ___ \\  ");
+    console.log("   \\/___\\/  ");
   };
   // Moved into Game for testing reasonsß
   this.determinePlayer = function() {

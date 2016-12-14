@@ -42,16 +42,16 @@ describe('Game', function() {
     ];
     diagonalWinningGame.playCounter = 7;
 
-    var catsGame = new Game();
-    catsGame.board = [
+    var catGame = new Game();
+    catGame.board = [
       [ "x", "o", "x" ],
       [ "o", "x", "o" ],
       [ "o", "x", "o" ]
     ];
-    catsGame.playCounter = 9;
+    catGame.playCounter = 9;
 
     it('should know if there is a cats game', function() {
-      expect(catsGame.checkIfWon()).toEqual(false);
+      expect(catGame.checkIfWon()).toEqual(false);
     });
     it('should know if there is a horizontal win', function() {
       expect(horizontalWinningGame.checkIfWon()).toEqual(true);
