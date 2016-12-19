@@ -1,18 +1,35 @@
 #top, #middle {
-  border-bottom: 4px solid red;
+  border-bottom: 4px solid #2A4D14;
 }
 
 td[id*="-middle"] {
-  border-left: 4px solid red;
-  border-right: 4px solid red;
+  border-left: 4px solid #2A4D14;
+  border-right: 4px solid #2A4D14;
 }
 
 td {
   text-align: center;
-  padding: 30px;
+  padding: 50px;
   font-size: 30px;
 }
 
 #board-table {
-  background-color: lightgreen;
+  background-color: #D8DDEF;
 }
+
+img {
+  width: 50%;
+
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+body {
+  background-color: #D8DDEF;
+}
+
+/*BA1B1D* red for fonts/
