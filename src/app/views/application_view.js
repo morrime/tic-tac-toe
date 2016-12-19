@@ -6,13 +6,15 @@ import BoardView from 'app/views/board_view';
 
 const ApplicationView = Backbone.View.extend({
   initialize: function(options) {
+
     this.board = options.model;
-    this.applicationTemplate = _.template($("#board").html());
+    console.log(this.board);
+    this.boardTemplate = _.template($("#board").html());
   },
   render: function() {
     var board = new BoardView({
       model: this.board,
-      template: this.applicationTemplate
+      template: this.boardTemplate
     });
     board.render();
     console.log(board);

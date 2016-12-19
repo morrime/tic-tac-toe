@@ -16,16 +16,14 @@
 
 
 
-    <script type="text/template" id="square">
-      <table id="board">
-
-        <tr id="top-row">
-
+    <script type="text/template" id="board">
+      <table>
+        <% for(var i=0; i<board.length; i++){ %>
+        <tr id="row"><% for(var j=0; j<board[i].length; j++){ %>
+          <td><%= board[i][j] %></td>
+          <% } %>
         </tr>
-        <tr id="mid-row">
-        </tr>
-        <tr id="bottom-row">
-        </tr>
+        <% } %>
       </table>
 
     </script>

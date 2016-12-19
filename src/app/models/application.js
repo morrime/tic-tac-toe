@@ -9,7 +9,6 @@ const Application = Backbone.Model.extend({
     console.log(testBoard);
   }
 });
-console.log("@@@@@@@@@@@@@@@@@@");
 
 
 export default Application;
