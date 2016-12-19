@@ -3,6 +3,8 @@
   <head>
     <title>Tic-Tac-Toe</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
     <header>
@@ -18,20 +20,20 @@
 
 
     <script type="text/template" id="board">
-      <tr id="[0]">
-        <td id="[0][0]"><%- board[0][0] %></td>
-        <td id="[0][1]"><%- board[0][1] %></td>
-        <td id="[0][2]"><%- board[0][2] %></td>
+      <tr id="top">
+        <td id="top-left"><%- board[0][0] %></td>
+        <td id="top-middle"><%- board[0][1] %></td>
+        <td id="top-right"><%- board[0][2] %></td>
       </tr>
-      <tr id="[1]">
-        <td id="[1][0]"><%- board[1][0] %></td>
-        <td id="[1][1]"><%- board[1][1] %></td>
-        <td id="[1][2]"><%- board[1][2] %></td>
+      <tr id="middle">
+        <td id="middle-left"><%- board[1][0] %></td>
+        <td id="middle-middle"><%- board[1][1] %></td>
+        <td id="middle-right"><%- board[1][2] %></td>
       </tr>
-      <tr id="[2]">
-        <td id="[2][0]"><%- board[2][0] %></td>
-        <td id="[2][1]"><%- board[2][1] %></td>
-        <td id="[2][2]"><%- board[2][2] %></td>
+      <tr id="bottom">
+        <td id="bottom-left"><%- board[2][0] %></td>
+        <td id="bottom-middle"><%- board[2][1] %></td>
+        <td id="bottom-right"><%- board[2][2] %></td>
       </tr>
     </script>
 
