@@ -7,11 +7,12 @@ const BoardView = Backbone.View.extend({
     this.template = options.template;
     this.board = options.model;
     console.log("#############");
-    console.log(this.board);
+    console.log(this.board.attributes);
   },
   render: function(){
-    var html = this.template({board: this.board});
+    var html = this.template({board: this.board.attributes.layout});
     this.$el.html(html);
+
     return this;
   }
 

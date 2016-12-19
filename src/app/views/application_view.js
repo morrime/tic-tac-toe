@@ -12,7 +12,7 @@ const ApplicationView = Backbone.View.extend({
   },
   render: function() {
     var board = new BoardView({
-      el: '#main',
+      el: '#board-table',
       model: this.board,
       template: this.boardTemplate
     });

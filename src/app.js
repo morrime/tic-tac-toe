@@ -9,10 +9,10 @@ import ApplicationView from 'app/views/application_view';
 $(document).ready(function(){
 
   var boardTest = new Application();
-
+  // console.log(boardTest.board.attributes.layout);
   var appView = new ApplicationView({
-    el: 'html',
-    model: boardTest
+    el: 'main',
+    model: boardTest.board
   });
 
   appView.render();
