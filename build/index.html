@@ -10,31 +10,30 @@
     </header>
 
 
-    <main id="main">
-
+    <main>
+      <table id="main">
+      </table>
     </main>
 
 
 
     <script type="text/template" id="board">
-      <table>
-        <% for(var i=0; i<board.length; i++){ %>
-        <tr id="row"><% for(var j=0; j<board[i].length; j++){ %>
-          <td><%= board[i][j] %></td>
-          <% } %>
-        </tr>
-        <% } %>
-      </table>
-
+      <tr id="[0]">
+        <td id="[0][0]"><%- 'board.layout[0][0]' %></td>
+        <td id="[0][1]"><%- board.layout[0][1] %></td>
+        <td id="[0][2]"><%- board.layout[0][2] %></td>
+      </tr>
+      <tr id="[1]">
+        <td id="[1][0]"><%- board.layout[1][0] %></td>
+        <td id="[1][1]"><%- board.layout[1][1] %></td>
+        <td id="[1][2]"><%- board.layout[1][2] %></td>
+      </tr>
+      <tr id="[2]">
+        <td id="[2][0]"><%- board.layout[2][0] %></td>
+        <td id="[2][1]"><%- board.layout[2][1] %></td>
+        <td id="[2][2]"><%- board.layout[2][2] %></td>
+      </tr>
     </script>
-
-
-
-
-
-
-
-
 
 
     <script src="/app.bundle.js" charset="utf-8"></script>
