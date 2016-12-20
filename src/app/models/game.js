@@ -7,18 +7,18 @@ const Game = Backbone.Model.extend({
     // set empty board
     this.board = new Board();
     // determine whose turn it is
-    this.xPlay = true;
+    this.set("xPlay", true);
     // Count number of turns that have occurred
-    this.playCounter = 0;
-    this.winner = null;
+    this.set("playCounter", 0);
+    this.set("winner", null);
   },
 
   // Cats Game output
   catsGame: function() {
   //  console.log("Cat's Game");
   // TODO: possibly put an alert
-    this.winner.set("You Both Lose.");
-    alert(this.winner);
+    this.set("winner", "You Both Lose.");
+    alert(this.get("winner"));
    return false;
  },
 
@@ -28,8 +28,10 @@ const Game = Backbone.Model.extend({
     // TODO possibly alert whose turn it is
     if ( this.xPlay === true ) {
       var x = "x";
+      console.log("x");
       return x;
     } else {
+      console.log("o");
       var o = "o";
       return o;
     }
@@ -61,17 +63,11 @@ console.log(this.board.layout);
   play: function(options) {
     var row = options.row;
     var column = options.column;
-    console.log(row);
-    console.log(column);
-    console.log("@@@@@@@@");
-    console.log(this.board);
-    console.log("$$$$$$$$$");
-    console.log(this.board.layout[row]);
-    console.log("########");
-    console.log(this.board.layout[row][column]);
 
     // if spot isn't occupied, mark spot with correct letter for player "x"
-    if((this.board.layout[row][column] === null) && (this.xPlay === true)) {
+    console.log("xplay: " + this.Xplay);
+    if((this.board.layout[row][column] === " ") && (this.xPlay === true)) {
+      console.log("xplay: " + this.Xplay);
       this.board.layout[row][column] = "x";
       this.xPlay = false;
       this.playCounter +=1;
@@ -85,7 +81,7 @@ console.log(this.board.layout);
       this.determinePlayer();
 
       // if spot isn't occupied, mark spot with correct letter for player "o"
-    } else if ((this.board.layout[row][column] === null) && (this.xPlay === false)) {
+    } else if ((this.board.layout[row][column] === " ") && (this.xPlay === false)) {
       this.board.layout[row][column] = "o";
       this.xPlay = true;
       this.playCounter +=1;
