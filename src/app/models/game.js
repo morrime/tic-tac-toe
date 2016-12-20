@@ -75,11 +75,16 @@ const Game = Backbone.Model.extend({
     var column = options.column;
     console.log(row);
     console.log(column);
-
+    console.log("@@@@@@@@");
+    console.log(this.board);
+    console.log("$$$$$$$$$");
+    console.log(this.board.layout[row]);
+    console.log("########");
+    console.log(this.board.layout[row][column]);
 
     // if spot isn't occupied, mark spot with correct letter for player "x"
-    if((this.board.layout[mappedHtml] === null) && (this.xPlay === true)) {
-      this.board.layout[mappedHtml] = "x";
+    if((this.board.layout[row][column] === null) && (this.xPlay === true)) {
+      this.board.layout[row][column] = "x";
       this.xPlay = false;
       this.playCounter +=1;
       // print winner if that marking results in a win
@@ -92,8 +97,8 @@ const Game = Backbone.Model.extend({
       this.determinePlayer();
 
       // if spot isn't occupied, mark spot with correct letter for player "o"
-    } else if ((this.board.layout[mappedHtml] === null) && (this.xPlay === false)) {
-      this.board.layout[mappedHtml] = "o";
+    } else if ((this.board.layout[row][column] === null) && (this.xPlay === false)) {
+      this.board.layout[row][column] = "o";
       this.xPlay = true;
       this.playCounter +=1;
 
