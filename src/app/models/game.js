@@ -51,7 +51,7 @@ const Game = Backbone.Model.extend({
       ) {
         return true;
       } else if (this.get("playCounter") === 9) {
-        catsGame();
+        this.catsGame();
       }
     }
     // no win
@@ -64,28 +64,32 @@ const Game = Backbone.Model.extend({
 
     // if spot isn't occupied, mark spot with correct letter for player "x"
     if((this.board.layout[row][column] === " ") && (this.get("xPlay") === true)) {
-      this.board.layout[row][column] = "x";
-      this.set("xPlay", false);
+      this.board.placeMarker({marker: "x", row: row, column: column})
+
       this.set("playCounter", this.get("playCounter")+1);
+      this.set("xPlay", false);
+
       // print winner if that marking results in a win
       if (this.get("playCounter") > 4 ) {
         if ( this.checkIfWon() === true) {
-          console.log("X WINS!");
+          alert("X WINS!");
         }
       }
-      // print player and board
+
+      // switching players
       this.determinePlayer();
 
       // if spot isn't occupied, mark spot with correct letter for player "o"
     } else if ((this.board.layout[row][column] === " ") && (this.get("xPlay") === false)) {
-      this.board.layout[row][column] = "o";
+      this.board.placeMarker({marker: "o", row: row, column: column})
+
       this.set("xPlay", true);
       this.set("playCounter", this.get("playCounter")+1);
 
       // print winner if that marking results in a win
       if (this.get("playCounter") > 4 ) {
         if ( this.checkIfWon() === true) {
-          console.log("O WINS!");
+           alert("O WINS!");
         }
       }
       // print player and board
@@ -101,48 +105,5 @@ const Game = Backbone.Model.extend({
 
   }
 });
-
-// Game.prototype.consolePlay = function(row, column) {
-//   while (!( row == 1 || row == 2 || row == 3 ) || !( column == 1 || column == 2 || column == 3 )) {
-//     throw new SyntaxError("Those are not valid coordinates");
-//   }
-//
-//   // if spot isn't occupied, mark spot with correct letter for player "x"
-//   if((this.board[mappedHtml] === null) && (this.xPlay === true)) {
-//     this.board[row-1][column-1] = "x";
-//     this.xPlay = false;
-//
-//     this.playCounter +=1;
-//     // print winner if that marking results in a win
-//     if (this.playCounter > 4 ) {
-//       if ( this.checkIfWon() === true) {
-//         console.log("X WINS!");
-//       }
-//     }
-//     // print player and board
-//     this.determinePlayer();
-//
-//     // if spot isn't occupied, mark spot with correct letter for player "o"
-//   } else if ((this.board[row-1][column-1] === null) && (this.xPlay === false)) {
-//     this.board[row-1][column-1] = "o";
-//     this.xPlay = true;
-//     this.playCounter +=1;
-//
-//     // print winner if that marking results in a win
-//     if (this.playCounter > 4 ) {
-//       if ( this.checkIfWon() === true) {
-//         console.log("O WINS!");
-//       }
-//     }
-//     // print player and board
-//     this.determinePlayer();
-//
-//     // invalid play, re-prompt
-//   } else {
-//     console.log("That's an invalid play. Please try again.");
-//     this.determinePlayer();
-//   }
-// };
-
 
 export default Game;

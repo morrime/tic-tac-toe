@@ -12,6 +12,9 @@ const GameView = Backbone.View.extend({
   },
 
   render: function() {
+    const boardSquare = this.$('#board-table');
+    boardSquare.empty();
+
     var board = new BoardView({
       el: '#board-table',
       model: this.board,

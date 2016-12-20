@@ -9,7 +9,7 @@ const BoardView = Backbone.View.extend({
     this.board = options.model;
     this.game = options.game;
 
-    this.listenTo(this.model, "update", this.render);
+    this.listenTo(this.board, 'change', this.render);
   },
 
   render: function(){
@@ -34,8 +34,6 @@ const BoardView = Backbone.View.extend({
       "left": 0,
       "right": 2
     };
-    console.log("#($#&@*(&#*))");
-    console.log(positionMap);
 
     var row = positionMap[split[0]];
     var column = positionMap[split[1]];

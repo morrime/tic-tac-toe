@@ -6,6 +6,7 @@ import Game from 'app/models/game';
 import GameView from 'app/views/game_view';
 
 
+
 $(document).ready(function(){
 
   var game = new Game();
@@ -16,6 +17,5 @@ $(document).ready(function(){
   });
 
   gmView.render();
-  console.log("YOLOOOOOOOOOOO");
 
 });
