@@ -2,31 +2,31 @@ import Game from 'app/models/game';
 
 
 describe('Game', function() {
-  // describe('board', function() {
-  //   var blankGame = new Game();
-  //
-  //   it('should be an array of three arrays', function() {
-  //     expect(blankGame.board.layout.length).toEqual(3);
-  //   });
-  //
-  //   it('should be an array', function () {
-  //     expect(blankGame.board.layout).toEqual(jasmine.any(Array));
-  //   });
-  //
-  //   it('should have subarrays with a length of 3', function(){
-  //     for (var i = 0; i < blankGame.board.layout.length; i ++ ) {
-  //       expect(blankGame.board.layout[i].length).toEqual(3);
-  //     }
-  //   });
-  //
-  //   it('should have subarrays filled with nulls', function(){
-  //     for (var i = 0; i < blankGame.board.layout.length; i ++ ) {
-  //       for (var j = 0; j < blankGame.board.layout[i].length; j ++ ) {
-  //         expect(blankGame.board.layout[i][j]).toEqual(null);
-  //       }
-  //     }
-  //   });
-  // });
+  describe('board', function() {
+    var blankGame = new Game();
+
+    it('should be an array of three arrays', function() {
+      expect(blankGame.board.layout.length).toEqual(3);
+    });
+
+    it('should be an array', function () {
+      expect(blankGame.board.layout).toEqual(jasmine.any(Array));
+    });
+
+    it('should have subarrays with a length of 3', function(){
+      for (var i = 0; i < blankGame.board.layout.length; i ++ ) {
+        expect(blankGame.board.layout[i].length).toEqual(3);
+      }
+    });
+
+    it('should have subarrays filled with nulls', function(){
+      for (var i = 0; i < blankGame.board.layout.length; i ++ ) {
+        for (var j = 0; j < blankGame.board.layout[i].length; j ++ ) {
+          expect(blankGame.board.layout[i][j]).toEqual(null);
+        }
+      }
+    });
+  });
 
   describe('checkIfWon', function() {
     var blankGame2 = new Game();

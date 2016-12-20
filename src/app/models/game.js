@@ -14,11 +14,8 @@ const Game = Backbone.Model.extend({
   },
 
   catsGame: function() {
-    console.log(">>>>>>>>> 1");
     // this.set("winner", "You Both Lose.");
-    console.log(">>>>>>>>> 2");
     alert("losers!");
-    console.log(">>>>>>>>> 3");
  },
 
   // Moved into Game for testing reasons

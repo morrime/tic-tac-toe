@@ -26,7 +26,7 @@ const BoardView = Backbone.View.extend({
   clickHandler: function(event) {
     var htmlId = event.target.id;
     var split = htmlId.split("-");
-    console.log(split);
+
     var positionMap = {
       "top": 0,
       "middle": 1,
