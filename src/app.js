@@ -2,19 +2,20 @@ import Backbone from 'backbone';
 import $ from 'jquery';
 import Board from 'app/models/board';
 import BoardView from 'app/views/board_view';
-import Application from 'app/models/application';
-import ApplicationView from 'app/views/application_view';
+import Game from 'app/models/game';
+import GameView from 'app/views/game_view';
 
 
 $(document).ready(function(){
 
-  var boardTest = new Application();
+  var game = new Game();
   // console.log(boardTest.board.attributes.layout);
-  var appView = new ApplicationView({
+  var gmView = new GameView({
     el: 'main',
-    model: boardTest.board
+    model: game.board,
+    game: game
   });
 
-  appView.render();
+  gmView.render();
 
 });
