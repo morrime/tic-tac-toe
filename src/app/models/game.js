@@ -49,6 +49,7 @@ const Game = Backbone.Model.extend({
         return true;
       } else if (this.get("playCounter") === 9) {
         this.catsGame();
+        return false;
       }
     }
     // no win
@@ -91,9 +92,9 @@ const Game = Backbone.Model.extend({
     if (options.playCounter > 4 ) {
       if ( this.checkIfWon() === true) {
         if (options.xPlay === true) {
-          alert("X wins!")
+          alert("X wins!");
         } else {
-          alert("O wins!")
+          alert("O wins!");
         }
       }
     }
