@@ -39,20 +39,18 @@ const Game = Backbone.Model.extend({
 
   // Just moved into Game for testing reasons
   checkIfWon: function() {
-    console.log("#%U#*(%&*$&%(*@))");
-console.log(this.board.layout);
     for(var i = 0; i < this.board.layout.length; i++) {
       // horizontal win
-      if ((this.board.layout[i][0] == this.board.layout[i][1]) && (this.board.layout[i][0] == this.board.layout[i][2]) && (this.board.layout[i][0] !== null) ) {
+      if ((this.board.layout[i][0] == this.board.layout[i][1]) && (this.board.layout[i][0] == this.board.layout[i][2]) && (this.board.layout[i][0] !== " ") ) {
         return true;
       // vertical win
-    } else if ((this.board.layout[0][i] == this.board.layout[1][i]) && (this.board.layout[0][i] == this.board.layout[2][i]) && (this.board.layout[0][i] !== null)) {
+    } else if ((this.board.layout[0][i] == this.board.layout[1][i]) && (this.board.layout[0][i] == this.board.layout[2][i]) && (this.board.layout[0][i] !== " ")) {
         return true;
       // diagonal win
-    } else if (((this.board.layout[0][0] == this.board.layout[1][1]) && (this.board.layout[0][0] == this.board.layout[2][2]) && (this.board.layout[1][1] !== null)) || ( (this.board.layout[0][2] == this.board.layout[1][1]) && (this.board.layout[0][2] == this.board.layout[2][0]) && (this.board.layout[1][1] !== null) )
+    } else if (((this.board.layout[0][0] == this.board.layout[1][1]) && (this.board.layout[0][0] == this.board.layout[2][2]) && (this.board.layout[1][1] !== " ")) || ( (this.board.layout[0][2] == this.board.layout[1][1]) && (this.board.layout[0][2] == this.board.layout[2][0]) && (this.board.layout[1][1] !== " ") )
       ) {
         return true;
-      } else if (this.playCounter === 9) {
+      } else if (this.get("playCounter") === 9) {
         catsGame();
       }
     }
@@ -65,14 +63,14 @@ console.log(this.board.layout);
     var column = options.column;
 
     // if spot isn't occupied, mark spot with correct letter for player "x"
-    console.log("xplay: " + this.Xplay);
-    if((this.board.layout[row][column] === " ") && (this.xPlay === true)) {
-      console.log("xplay: " + this.Xplay);
+    console.log("xplay: " + this.get("xPlay"));
+    if((this.board.layout[row][column] === " ") && (this.get("xPlay") === true)) {
+      console.log("xplay: " + this.get("xPlay"));
       this.board.layout[row][column] = "x";
-      this.xPlay = false;
-      this.playCounter +=1;
+      this.set("xPlay", false);
+      this.set("playCounter", "playCounter"+1);
       // print winner if that marking results in a win
-      if (this.playCounter > 4 ) {
+      if (this.get("playCounter") > 4 ) {
         if ( this.checkIfWon() === true) {
           console.log("X WINS!");
         }
@@ -81,13 +79,13 @@ console.log(this.board.layout);
       this.determinePlayer();
 
       // if spot isn't occupied, mark spot with correct letter for player "o"
-    } else if ((this.board.layout[row][column] === " ") && (this.xPlay === false)) {
+    } else if ((this.board.layout[row][column] === " ") && (this.get("xPlay") === false)) {
       this.board.layout[row][column] = "o";
-      this.xPlay = true;
-      this.playCounter +=1;
+      this.set("xPlay", true);
+      this.set("playCounter", "playCounter"+1);
 
       // print winner if that marking results in a win
-      if (this.playCounter > 4 ) {
+      if (this.get("playCounter") > 4 ) {
         if ( this.checkIfWon() === true) {
           console.log("O WINS!");
         }
