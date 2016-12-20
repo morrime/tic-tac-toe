@@ -25,22 +25,20 @@ const BoardView = Backbone.View.extend({
 
   clickHandler: function(event) {
     var htmlId = event.target.id;
-
+    var split = htmlId.split("-");
+    console.log(split);
     var positionMap = {
-      "top-left": [0][0],
-      "top-middle": [0][1],
-      "top-right": [0][2],
-      "middle-left": [1][0],
-      "middle-middle": [1][1],
-      "middle-right": [1][2],
-      "bottom-left": [2][0],
-      "bottom-middle": [2][1],
-      "bottom-right": [2][2]
-    }
+      "top": 0,
+      "middle": 1,
+      "bottom": 2,
+      "left": 0,
+      "right": 2
+    };
 
-    var mappedHtml = positionMap[htmlId];
+    var row = positionMap[split[0]];
+    var column = positionMap[split[1]];
 
-    this.game.play(mappedHtml)
+    this.game.play({row: row, column: column});
   }
 
 });

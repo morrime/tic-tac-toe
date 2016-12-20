@@ -70,13 +70,17 @@ const Game = Backbone.Model.extend({
     return false;
   },
 
-  play: function(mappedHtml) {
-    // if spot isn't occupied, mark spot with correct letter for player "x"
-    if((this.board[mappedHtml] === null) && (this.xPlay === true)) {
-      this.board[row-1][column-1] = "x";
-      this.xPlay = false;
-      // this.xPlay = false;
+  play: function(options) {
+    var row = options.row;
+    var column = options.column;
+    console.log(row);
+    console.log(column);
 
+
+    // if spot isn't occupied, mark spot with correct letter for player "x"
+    if((this.board.layout[mappedHtml] === null) && (this.xPlay === true)) {
+      this.board.layout[mappedHtml] = "x";
+      this.xPlay = false;
       this.playCounter +=1;
       // print winner if that marking results in a win
       if (this.playCounter > 4 ) {
@@ -88,8 +92,8 @@ const Game = Backbone.Model.extend({
       this.determinePlayer();
 
       // if spot isn't occupied, mark spot with correct letter for player "o"
-    } else if ((this.board[mappedHtml] === null) && (this.xPlay === false)) {
-      this.board[mappedHtml] = "o";
+    } else if ((this.board.layout[mappedHtml] === null) && (this.xPlay === false)) {
+      this.board.layout[mappedHtml] = "o";
       this.xPlay = true;
       this.playCounter +=1;
 
