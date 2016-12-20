@@ -4,16 +4,15 @@ import Board from 'app/models/board';
 // var testBoard = [[1,null,3], [4,5,6], [7,8,9]];
 
 const Game = Backbone.Model.extend({
-  defaults: {
-    // determine whose turn it is
-    xPlay: true,
-    // Count number of turns that have occurred
-    playCounter: 0
-  },
+
 
   initialize: function(options) {
     // set empty board
     this.board = new Board();
+    // determine whose turn it is
+    this.xPlay = true;
+    // Count number of turns that have occurred
+    this.playCounter = 0;
   },
 
 
