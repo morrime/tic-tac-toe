@@ -1,8 +1,8 @@
 import Backbone from 'backbone';
 
 const Board = Backbone.Model.extend({
-  defaults: {
-    layout: [[" "," "," "], [" "," "," "], [" "," "," "]]
+  initialize: function(options) {
+    this.layout = [[" "," "," "], [" "," "," "], [" "," "," "]];
   }
 });
 

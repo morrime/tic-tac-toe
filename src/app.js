@@ -9,7 +9,6 @@ import GameView from 'app/views/game_view';
 $(document).ready(function(){
 
   var game = new Game();
-  // console.log(boardTest.board.attributes.layout);
   var gmView = new GameView({
     el: 'main',
     model: game.board,
@@ -17,5 +16,6 @@ $(document).ready(function(){
   });
 
   gmView.render();
+  console.log("YOLOOOOOOOOOOO");
 
 });

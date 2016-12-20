@@ -13,7 +13,7 @@ const BoardView = Backbone.View.extend({
   },
 
   render: function(){
-    var html = this.template({board: this.board.attributes.layout});
+    var html = this.template({board: this.board.layout});
     this.$el.html(html);
 
     return this;
@@ -34,6 +34,8 @@ const BoardView = Backbone.View.extend({
       "left": 0,
       "right": 2
     };
+    console.log("#($#&@*(&#*))");
+    console.log(positionMap);
 
     var row = positionMap[split[0]];
     var column = positionMap[split[1]];

@@ -6,7 +6,7 @@ import BoardView from 'app/views/board_view';
 
 const GameView = Backbone.View.extend({
   initialize: function(options) {
-    this.game = options.game
+    this.game = options.game;
     this.board = options.model;
     this.boardTemplate = _.template($("#board").html());
   },
