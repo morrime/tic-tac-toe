@@ -2,6 +2,20 @@ import Backbone from 'backbone';
 import Board from 'app/models/board';
 
 const Game = Backbone.Model.extend({
+  url: "http://localhost:3000/api/v1/games",
+
+  parse: function(data) {
+    var merged = [].concat.apply([], data.board.layout);
+    object = {
+      "id": null,
+      "board": merged,
+      "players": ["X Player","O Player" ],
+      "outcome": data.winner,
+      "played_at": null
+    }
+    console.log(">>>>>>" + object);
+    return object;
+  },
 
   initialize: function(options) {
     // set empty board
@@ -14,7 +28,8 @@ const Game = Backbone.Model.extend({
   },
 
   catsGame: function() {
-    this.set("winner", "C");
+    this.set("winner", "Draw");
+    this.save();
     // alert("losers!");
   },
 
@@ -47,14 +62,14 @@ const Game = Backbone.Model.extend({
 
     if((this.board.layout[row][column] === " ") && (this.get("xPlay") === true)) {
       // mark spot with correct letter for player "x"
-      this.board.placeMarker({marker: "x", row: row, column: column});
+      this.board.placeMarker({marker: "X", row: row, column: column});
 
       // Changes variables in preparation for the next turn
       this.nextTurnLogic();
 
     } else if ((this.board.layout[row][column] === " ") && (this.get("xPlay") === false)) {
       // mark spot with correct letter for player "o"
-      this.board.placeMarker({marker: "o", row: row, column: column});
+      this.board.placeMarker({marker: "O", row: row, column: column});
 
       // Changes variables in preparation for the next turn
       this.nextTurnLogic();
@@ -71,10 +86,11 @@ const Game = Backbone.Model.extend({
       if ( this.checkIfWon() === true) {
         if (this.get("xPlay") === true) {
           this.set("winner", "X");
-          // this.game.save
+          this.save();
           // alert("X wins!");
         } else {
           this.set("winner", "O");
+          this.save();
           // alert("O wins!");
         }
       }
