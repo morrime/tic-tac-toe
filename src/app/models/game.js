@@ -15,7 +15,7 @@ const Game = Backbone.Model.extend({
 
   catsGame: function() {
     this.set("winner", "C");
-    alert("losers!");
+    // alert("losers!");
   },
 
   // Just moved into Game for testing reasons
@@ -60,7 +60,8 @@ const Game = Backbone.Model.extend({
 
       // invalid play, re-prompt
     } else {
-      alert("That's an invalid play. Please try again.");
+      continue;
+      // alert("That's an invalid play. Please try again.");
       // this.determinePlayer();
     }
 
@@ -73,10 +74,10 @@ const Game = Backbone.Model.extend({
       if ( this.checkIfWon() === true) {
         if (this.get("xPlay") === true) {
           this.set("winner", "X");
-          alert("X wins!");
+          // alert("X wins!");
         } else {
           this.set("winner", "O");
-          alert("O wins!");
+          // alert("O wins!");
         }
       }
     }
