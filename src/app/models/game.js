@@ -5,15 +5,17 @@ const Game = Backbone.Model.extend({
   url: "http://localhost:3000/api/v1/games",
 
   parse: function(data) {
-    var merged = [].concat.apply([], data.board.layout);
-    object = {
-      "id": null,
-      "board": merged,
+    console.log(">>>>>>" + data);
+
+    // var merged = [].concat.apply([], data.board.layout);
+
+    var object = {
+      "board": [ "X"," ","O","X","O"," ","X"," "," "],
       "players": ["X Player","O Player" ],
-      "outcome": data.winner,
-      "played_at": null
-    }
-    console.log(">>>>>>" + object);
+      "outcome": "X"
+    };
+
+    // var json = JSON.stringify(object);
     return object;
   },
 

@@ -10,6 +10,8 @@ import GameView from 'app/views/game_view';
 $(document).ready(function(){
 
   var game = new Game();
+  // game.fetch();
+
   var gmView = new GameView({
     el: 'main',
     model: game.board,
