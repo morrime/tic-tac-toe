@@ -125,24 +125,24 @@ describe('Game', function() {
       game3.play({row: 1, column: 1});
       game3.play({row: 1, column: 3});
       game3.play({row: 1, column: 3});
-      expect(game3.determinePlayer()).toEqual("x");
+      expect(game3.get("xPlay")).toEqual(true);
     });
 
     it('should increment playCounter by 1 if play is valid', function() {
       // counter should start at 0
-      expect(game4.get("playCounter")).toEqual(0);
+      expect(game5.get("playCounter")).toEqual(0);
 
       // counter should increment by 1 with valid play
-      game4.play({row: 1, column: 1});
-      expect(game4.get("playCounter")).toEqual(1);
+      game5.play({row: 1, column: 1});
+      expect(game5.get("playCounter")).toEqual(1);
 
       // counter should not increment by 1 with invalid play
-      game4.play({row: 1, column: 1});
-      expect(game4.get("playCounter")).toEqual(1);
+      game5.play({row: 1, column: 1});
+      expect(game5.get("playCounter")).toEqual(1);
 
       // counter should increment by 1 with valid play
-      game4.play({row: 1, column: 2});
-      expect(game4.get("playCounter")).toEqual(2);
+      game5.play({row: 1, column: 2});
+      expect(game5.get("playCounter")).toEqual(2);
     });
   });
 });

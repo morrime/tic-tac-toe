@@ -41,6 +41,7 @@ const Game = Backbone.Model.extend({
   },
 
   play: function(options) {
+
     var row = options.row;
     var column = options.column;
 
@@ -59,10 +60,6 @@ const Game = Backbone.Model.extend({
       this.nextTurnLogic();
 
       // invalid play, re-prompt
-    } else {
-      continue;
-      // alert("That's an invalid play. Please try again.");
-      // this.determinePlayer();
     }
 
   },
@@ -74,6 +71,7 @@ const Game = Backbone.Model.extend({
       if ( this.checkIfWon() === true) {
         if (this.get("xPlay") === true) {
           this.set("winner", "X");
+          // this.game.save
           // alert("X wins!");
         } else {
           this.set("winner", "O");
