@@ -4,8 +4,12 @@ import Board from 'app/models/board';
 const Game = Backbone.Model.extend({
   url: "http://localhost:3000/api/v1/games",
 
-  parse: function(data) {
-    console.log(">>>>>>" + data);
+  parse: function(response) {
+    return response;
+  },
+
+  toJSON: function(data) {
+    console.log(">>>>>>" + data.get("board"));
 
     // var merged = [].concat.apply([], data.board.layout);
 
@@ -15,8 +19,8 @@ const Game = Backbone.Model.extend({
       "outcome": "X"
     };
 
-    // var json = JSON.stringify(object);
     return object;
+
   },
 
   initialize: function(options) {
