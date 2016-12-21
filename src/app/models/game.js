@@ -5,7 +5,7 @@ const Game = Backbone.Model.extend({
   url: "http://localhost:3000/api/v1/games",
 
   parse: function(response) {
-    return response.results;
+    return response;
   },
 
   toJSON: function() {
@@ -18,7 +18,7 @@ const Game = Backbone.Model.extend({
       "players": ["X Player","O Player" ],
       "outcome": this.get("winner")
     };
-
+    console.log(object);
     return object;
 
   },
