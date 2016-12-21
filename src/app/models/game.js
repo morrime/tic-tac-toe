@@ -22,7 +22,7 @@ const Game = Backbone.Model.extend({
   determinePlayer: function() {
     // print whose turn it is
     // TODO possibly alert whose turn it is
-    if ( this.xPlay === true ) {
+    if ( this.get("xPlay") === true ) {
       var x = "x";
       return x;
     } else {
