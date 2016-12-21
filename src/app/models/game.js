@@ -9,12 +9,12 @@ const Game = Backbone.Model.extend({
   },
 
   toJSON: function(data) {
-    console.log(">>>>>>" + data.get("board"));
+    console.log(">>>>>>" + data.properties);
 
-    // var merged = [].concat.apply([], data.board.layout);
+    var merged = [].concat.apply([], data.board.layout);
 
     var object = {
-      "board": [ "X"," ","O","X","O"," ","X"," "," "],
+      "board": merged,
       "players": ["X Player","O Player" ],
       "outcome": "X"
     };
