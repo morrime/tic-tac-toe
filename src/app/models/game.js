@@ -14,21 +14,8 @@ const Game = Backbone.Model.extend({
   },
 
   catsGame: function() {
-    // this.set("winner", "You Both Lose.");
+    this.set("winner", "C");
     alert("losers!");
- },
-
-  // Moved into Game for testing reasons
-  determinePlayer: function() {
-    // print whose turn it is
-    // TODO possibly alert whose turn it is
-    if ( this.get("xPlay") === true ) {
-      var x = "x";
-      return x;
-    } else {
-      var o = "o";
-      return o;
-    }
   },
 
   // Just moved into Game for testing reasons
@@ -57,45 +44,43 @@ const Game = Backbone.Model.extend({
     var row = options.row;
     var column = options.column;
 
-    // if spot isn't occupied, mark spot with correct letter for player "x"
     if((this.board.layout[row][column] === " ") && (this.get("xPlay") === true)) {
+      // mark spot with correct letter for player "x"
       this.board.placeMarker({marker: "x", row: row, column: column});
 
-      this.set("playCounter", this.get("playCounter")+1);
-      this.set("xPlay", false);
+      // Changes variables in preparation for the next turn
+      this.nextTurnLogic();
 
-      // print winner if that marking results in a win
-      this.nextTurnLogic({playCounter: this.get("playCounter"), xPlay: true });
-
-      // if spot isn't occupied, mark spot with correct letter for player "o"
     } else if ((this.board.layout[row][column] === " ") && (this.get("xPlay") === false)) {
+      // mark spot with correct letter for player "o"
       this.board.placeMarker({marker: "o", row: row, column: column});
 
-      this.set("xPlay", true);
-      this.set("playCounter", this.get("playCounter")+1);
-
-      // print winner if that marking results in a win
-      this.nextTurnLogic({playCounter: this.get("playCounter"), xPlay: false });
+      // Changes variables in preparation for the next turn
+      this.nextTurnLogic();
 
       // invalid play, re-prompt
     } else {
       alert("That's an invalid play. Please try again.");
-      this.determinePlayer();
+      // this.determinePlayer();
     }
 
   },
 
   nextTurnLogic: function(options) {
-    if (options.playCounter > 4 ) {
+    this.set("playCounter", this.get("playCounter")+1);
+
+    if (this.get("playCounter") > 4 ) {
       if ( this.checkIfWon() === true) {
-        if (options.xPlay === true) {
+        if (this.get("xPlay") === true) {
+          this.set("winner", "X");
           alert("X wins!");
         } else {
+          this.set("winner", "O");
           alert("O wins!");
         }
       }
     }
-    this.determinePlayer();
+    this.set("xPlay", !(this.get("xPlay")));
   }
 
 });
