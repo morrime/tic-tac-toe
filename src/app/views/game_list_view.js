@@ -6,7 +6,7 @@ import Backbone from 'backbone';
 var GameListView = Backbone.View.extend({
   initialize: function(options) {
     this.template = options.template;
-    this.gameList = [];
+    this.gameList = options.model;
     // this.model.forEach(function(game) {
     //   gameList.push(game);
     // });
@@ -17,7 +17,6 @@ var GameListView = Backbone.View.extend({
   render: function(){
     var html = this.template({gameList: this.gameList});
     this.$el.html(html);
-
     return this;
   },
 

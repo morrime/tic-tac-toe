@@ -8,7 +8,7 @@ const GameView = Backbone.View.extend({
   initialize: function(options) {
     this.game = options.game;
     this.board = options.model;
-    this.collection = options.collection;
+    this.gameList = options.collection;
 
     // options.collection.forEach(function(jsonGame) {
     //   this.addGame(jsonGame);
@@ -19,9 +19,9 @@ const GameView = Backbone.View.extend({
   },
 
   render: function() {
-    const boardSquare = this.$('#board-table');
+    var boardSquare = this.$('#board-table');
     boardSquare.empty();
-    debugger;
+
     var board = new BoardView({
       el: '#board-table',
       model: this.board,
@@ -29,6 +29,9 @@ const GameView = Backbone.View.extend({
       game: this.game
     });
     board.render();
+
+    var list = this.$('#game-list');
+    list.empty();
 
     var list = new GameListView({
       el: '#previous-games',

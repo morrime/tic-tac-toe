@@ -2,6 +2,14 @@ import Backbone from 'backbone';
 import Board from 'app/models/board';
 
 const Game = Backbone.Model.extend({
+  defaults: function() {
+    return {
+      board: [" ", " ", " ", " ", " ", " ", " ", " ", " "],
+      players: [" ", " "],
+      outcome: " "
+    }
+  },
+
   url: "http://localhost:3000/api/v1/games",
 
   parse: function(response) {

@@ -41,9 +41,9 @@
     </script>
 
     <script type="text/template" id="game-list">
-      <% for(var i = 0; i< gameList.length; i++) { %>
-        <li id="game-instance"><%= gameList[i] %></li>
-        <% } %>
+      <% gameList.forEach(function(game) { %>
+        <li id="game-instance"><%= game.get("outcome") %></li>
+      <% }); %>
     </script>
 
 
