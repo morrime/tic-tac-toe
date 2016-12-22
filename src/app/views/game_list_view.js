@@ -18,8 +18,7 @@ var GameListView = Backbone.View.extend({
     var html = this.template({gameList: this.gameList});
     this.$el.html(html);
     return this;
-  },
-
+  }
 });
 
 export default GameListView;

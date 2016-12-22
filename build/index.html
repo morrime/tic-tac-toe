@@ -13,9 +13,15 @@
 
 
     <main id="main" class="row">
-      <table id="board-table" class="small-6 small-centered columns">
+      <div class="small-3 columns">
+        <h3>Rules</h3>
+        <p>Get three in a row.</p>
+
+      </div>
+      <table id="board-table" class="small-4 small-center columns">
       </table>
-      <ul id="previous-games">
+
+      <ul id="previous-games" class="small-3 columns">
 
       </ul>
     </main>
@@ -42,7 +48,7 @@
 
     <script type="text/template" id="game-list">
       <% gameList.forEach(function(game) { %>
-        <li id="game-instance"><%= game.get("outcome") %></li>
+        <li id="game-instance">ID: <%= game.get("id") %>, WINNER: <%= game.get("outcome") %>, PLAYED AT: <%= game.get("played_at") %></li>
       <% }); %>
     </script>
 
