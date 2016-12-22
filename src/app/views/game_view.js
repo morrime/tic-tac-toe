@@ -15,7 +15,6 @@ const GameView = Backbone.View.extend({
 
     this.listenTo(this.gameList, 'update', this.render);
     this.listenTo(this.gameList, 'add', this.render);
-
   },
 
   render: function() {

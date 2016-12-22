@@ -31,7 +31,7 @@ const Game = Backbone.Model.extend({
   },
 
   catsGame: function() {
-    this.set("winner", "Draw");
+    this.set("winner", "draw");
     this.save();
     // alert("losers!");
   },
@@ -90,10 +90,12 @@ const Game = Backbone.Model.extend({
         if (this.get("xPlay") === true) {
           this.set("winner", "X");
           this.save();
+          this.clear().set(myModel.defaults);
           // alert("X wins!");
         } else {
           this.set("winner", "O");
           this.save();
+          this.clear().set(myModel.defaults);
           // alert("O wins!");
         }
       }

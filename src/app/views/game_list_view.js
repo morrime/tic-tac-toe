@@ -15,6 +15,10 @@ var GameListView = Backbone.View.extend({
   },
 
   render: function(){
+    var topTenArray = [];
+    this.gameList.forEach(function(game) {
+      topTenArray.push(game);
+    });
     var html = this.template({gameList: this.gameList});
     this.$el.html(html);
     return this;

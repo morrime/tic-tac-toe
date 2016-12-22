@@ -19,7 +19,9 @@ td {
 
 img {
   width: 50%;
-
+  border: 30px solid white;
+  border-radius: 25px;
+  margin-bottom: 60px;
 }
 
 header {
@@ -32,4 +34,22 @@ body {
   background-color: #D8DDEF;
 }
 
+td, #smaller-font {
+  font-size: 15px;
+  padding: 30px;
+}
+
+#green {
+  color: green;
+  font-size: 30px;
+}
+
+.header-font {
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+h4 {
+  text-decoration: underline;
+}
 /*BA1B1D* red for fonts/

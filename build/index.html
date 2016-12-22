@@ -13,12 +13,20 @@
 
 
     <main id="main" class="row">
-      <div class="small-3 columns">
-        <h3>Rules</h3>
-        <p>Get three in a row.</p>
-
+      <div class="small-2 columns">
+        <h4><strong>RULES</strong></h4>
+        <p><strong>Get three in a row.</strong></p>
+        <p><strong>First player is "X", second player is "O"</strong></p>
+        <p><strong>Alternate placing Xs and Os on the game board until:</strong></p>
+          <p> either player has three in a row</p>
+            <p>-OR-</p>
+            <p>all nine squares are filled (cat's game)</p>
+        <p id="green">#yolo</p>
       </div>
-      <table id="board-table" class="small-4 small-center columns">
+      <div class="small-1 columns">
+        <p>    </p>
+      </div>
+      <table id="board-table" class="small-5 small-center columns">
       </table>
 
       <ul id="previous-games" class="small-3 columns">
@@ -46,12 +54,21 @@
       </tr>
     </script>
 
+
+
     <script type="text/template" id="game-list">
+      <tr>
+        <th class="header-font">ID</th>
+        <th class="header-font">WINNER</th>
+        <th class="header-font">PLAYED AT</th>
+      </tr>
       <% gameList.forEach(function(game) { %>
-        <li id="game-instance">ID: <%= game.get("id") %>, WINNER: <%= game.get("outcome") %>, PLAYED AT: <%= game.get("played_at") %></li>
+        <tr><td id="game-instance" class="smaller-font"><%= game.get("id") %></td>
+          <td class="smaller-font"><%= game.get("outcome") %></td>
+          <td class="smaller-font"><%= game.get("played_at") %></td>
+        </tr>
       <% }); %>
     </script>
-
 
     <script src="/app.bundle.js" charset="utf-8"></script>
   </body>
